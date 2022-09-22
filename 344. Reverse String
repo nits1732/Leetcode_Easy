@@ -1,0 +1,22 @@
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        //using the O(n)*O(n) approach 
+        int size=s.size();
+        // vector<char> ans;
+        // for(int i=size;i>=0;i--){
+        //     ans.push_back(s[i]);
+        
+        // using the O(1) space and O(n) approch 
+        // int si=0;
+        // int ei=size-1;
+        //     while(si<=ei){
+        //         swap(s[si],s[ei]);
+        //         si++;
+        //         ei--;
+        //     }
+        
+        //using the std lib reverse function
+        reverse(s.begin(), s.end());
+        }
+};
