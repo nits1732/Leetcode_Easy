@@ -1,0 +1,22 @@
+Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+A subarray is a contiguous part of an array
+
+
+
+
+class Solution {
+public:
+    // using the caden's algorithm: we put the element into the bag, if we encounter that the bag contain negative element then we will make the bag =0
+    int maxSubArray(vector<int>& nums) {
+        int ans=INT_MIN;
+        int sum=0;
+        
+        for(auto s:nums){
+            sum+=s;
+            ans=max(ans,sum);
+            if(sum<0)sum=0;
+        }
+        return ans;
+    }
+};
