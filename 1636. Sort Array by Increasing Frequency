@@ -1,0 +1,29 @@
+class Solution {
+public:
+    static bool cmp(vector<int>v1, vector<int>v2){
+        if(v1[0]<v2[0]) return true;
+        if(v1[0]==v2[0]){
+            return v1[1]>v2[1];
+        }
+        return false;
+    }
+    vector<int> frequencySort(vector<int>& nums) {
+        unordered_map<int, int> m;
+        for(auto x: nums){
+            m[x]++;
+        }
+        vector<vector<int>> v;
+        for(auto x: m){
+            v.push_back({x.second,x.first});
+        }
+        sort(v.begin(),v.end(),cmp);
+        vector<int>ans;
+        for(auto a:v){
+            int x= a[0];
+            while(x--){
+                ans.push_back(a[1]);
+            }
+        }
+        return ans;
+    }
+};
