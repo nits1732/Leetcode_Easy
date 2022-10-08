@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int countStudents(vector<int>& students, vector<int>& sandwiches) {
+        deque<int> q;
+        for(auto a: students)q.push_back(a);
+        for(auto a: sandwiches){
+            if(q.front()==a){
+                q.pop_front();
+                continue;
+            }
+            int size= q.size();
+            int f=0;
+            while(size--){
+                auto x=q.front();
+                if(x==a){
+                    q.pop_front();
+                    f=1;
+                    break;
+                }else{
+                    q.pop_front();
+                    q.push_back(x);
+                }
+            }
+            if(f==0){
+                return q.size();
+            }
+        }
+        return 0;
+    }
+};
