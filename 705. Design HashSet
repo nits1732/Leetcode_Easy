@@ -1,0 +1,45 @@
+// This code is using the chaining technique in which linked list is used.
+class MyHashSet {
+public:
+    vector<list<int>> m;
+    int siz;
+    MyHashSet() {
+        siz=100;
+        m.resize(siz);
+    }
+    int hash(int key){
+        return key%siz;
+    }
+    list<int> :: iterator search(int Key){
+        int i=hash(Key);
+        return find(m[i].begin(), m[i].end(),Key);
+    }
+    void add(int Key) {
+        int i=hash(Key);
+        if(!contains(Key)){
+            m[i].push_back(Key);
+        }else{
+            return;
+        }
+    }
+    
+    void remove(int Key) {
+        int i= hash(Key);
+        if(!contains(Key)) return;
+        m[i].erase(search(Key));
+    }
+    
+    bool contains(int Key) {
+        int i= hash(Key);
+        if(search(Key)!=m[i].end()) return true;
+        else return false;
+    }
+};
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet* obj = new MyHashSet();
+ * obj->add(key);
+ * obj->remove(key);
+ * bool param_3 = obj->contains(key);
+ */
