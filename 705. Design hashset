@@ -1,0 +1,22 @@
+// This is using the vector solution within the question size range 
+class MyHashSet {
+public:
+    vector<int> m;
+    int siz;
+    MyHashSet() {
+        siz= 10e6+1;
+        m.resize(siz);
+    }
+    
+    void add(int key) {
+        m[key]=1;
+    }
+    
+    void remove(int key) {
+        m[key]=0;
+    }
+    
+    bool contains(int key) {
+        return m[key];
+    }
+};
